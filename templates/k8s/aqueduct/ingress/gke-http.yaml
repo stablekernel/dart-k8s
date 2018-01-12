@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: $API_INGRESS_NAME
+  namespace: $NAMESPACE
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "static-ip-name"
+spec:
+  rules:
+  - host: $API_HOSTNAME
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: api-service
+          servicePort: 80

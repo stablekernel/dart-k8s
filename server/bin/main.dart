@@ -3,7 +3,7 @@ import 'package:heroes/heroes.dart';
 Future main() async {
   var app = new Application<HeroesSink>()
       ..configuration.configurationFilePath = "config.yaml"
-      ..configuration.port = 8000;
+      ..configuration.port = 8082;
 
   await app.start(numberOfInstances: 2);
 

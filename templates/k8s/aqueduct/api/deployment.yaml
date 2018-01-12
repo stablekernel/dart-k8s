@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: $NAMESPACE
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: $APP_NAME
+        tier: backend
+        type: api
+    spec:
+      containers:
+        - name: $APP_NAME
+          imagePullPolicy: Always
+          image: $IMAGE_NAME
+          envFrom:
+            - secretRef:
+                name: secrets
+            - configMapRef:
+                name: config
+          ports:
+            - containerPort: $PORT

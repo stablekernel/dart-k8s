@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: $NAMESPACE
+data:
+  PGDATA: /var/lib/postgresql/data/$APP_NAME
+  POSTGRES_DB: $APP_NAME
+  POSTGRES_USER: $APP_NAME

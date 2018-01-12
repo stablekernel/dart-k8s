@@ -1,4 +1,5 @@
 import 'heroes.dart';
+import 'package:heroes/controller/health_controller.dart';
 import 'package:heroes/controller/hero_controller.dart';
 
 /// This type initializes an application.
@@ -28,8 +29,12 @@ class HeroesSink extends RequestSink {
   @override
   void setupRouter(Router router) {
     router
-        .route("/heroes/[:id]")
-        .generate(() => new HeroController());
+      .route("/health")
+      .generate(() => new HealthController());
+
+    router
+      .route("/heroes/[:id]")
+      .generate(() => new HeroController());
   }
 
   /// Final initialization method for this instance.

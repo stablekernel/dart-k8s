@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: $NAMESPACE
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: $APP_NAME
+        tier: backend
+        type: database
+    spec:
+      containers:
+        - name: postgresql
+          image: postgres:9.6
+          envFrom:
+            - secretRef:
+                name: secrets
+            - configMapRef:
+                name: config
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: volume-claim
