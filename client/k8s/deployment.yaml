@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-deployment
+  namespace: dart-heroes
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dart-heroes
+        role: Frontend
+    spec:
+      containers:
+        - name: dart-heroes
+          imagePullPolicy: Always
+          image: dartheroes/angular:latest
+          ports:
+            - containerPort: 80
+      securityContext:
+        runAsNonRoot: true
