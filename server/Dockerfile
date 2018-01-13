@@ -19,4 +19,4 @@ RUN pub get --offline --no-precompile
 
 EXPOSE 8082
 
-ENTRYPOINT ["pub", "run", "aqueduct:aqueduct", "serve", "--port", "8082"]
+ENTRYPOINT ["pub", "run", "aqueduct:aqueduct", "serve", "--port", "8082", "-c", "k8s-config.yaml"]

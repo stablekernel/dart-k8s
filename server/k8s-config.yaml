@@ -1,0 +1,6 @@
+database:
+ username: $POSTGRES_USER
+ password: $POSTGRES_PASSWORD
+ databaseName: $POSTGRES_DB
+ host: db-service
+ port: 5432
