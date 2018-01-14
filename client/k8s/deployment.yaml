@@ -2,14 +2,13 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: web-deployment
-  namespace: dart-heroes
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: dart-heroes
-        role: Frontend
+        role: frontend
     spec:
       containers:
         - name: dart-heroes
