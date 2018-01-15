@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: db-upgrade-job
-  namespace: dart-heroes
 spec:
   restartPolicy: Never
   containers:

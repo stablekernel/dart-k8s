@@ -2,7 +2,6 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: api-deployment
-  namespace: dart-heroes
 spec:
   replicas: 2
   template:

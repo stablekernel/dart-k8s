@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config
-  namespace: dart-heroes
 data:
   PGDATA: /var/lib/postgresql/data/dart-heroes
   POSTGRES_DB: dart-heroes

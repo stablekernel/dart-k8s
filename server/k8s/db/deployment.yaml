@@ -2,7 +2,6 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: db-deployment
-  namespace: dart-heroes
 spec:
   replicas: 1
   revisionHistoryLimit: 0
