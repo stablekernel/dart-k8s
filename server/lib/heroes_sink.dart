@@ -28,6 +28,8 @@ class HeroesSink extends RequestSink {
   /// All routes must be set up in this method and cannot be added after this method completes.
   @override
   void setupRouter(Router router) {
+    router.basePath = "/api";
+
     router
       .route("/health")
       .generate(() => new HealthController());

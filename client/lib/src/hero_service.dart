@@ -9,7 +9,7 @@ import 'hero.dart';
 @Injectable()
 class HeroService {
   static final _headers = {'Content-Type': 'application/json'};
-  static const _heroesUrl = 'http://localhost:8888/heroes'; // URL to web API
+  static const _heroesUrl = 'api/heroes';
 
   final Client _http;
 

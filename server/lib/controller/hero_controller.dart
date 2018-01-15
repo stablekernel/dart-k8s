@@ -3,8 +3,13 @@ import 'package:heroes/model/hero.dart';
 
 class HeroController extends HTTPController {
   @httpGet
-  Future<Response> getHeroes() async {
+  Future<Response> getHeroes({@HTTPQuery('name') String name}) async {
     final query = new Query<Hero>();
+    
+    if (name != null) {
+      query.where.name = whereContainsString(name, caseSensitive: false);
+    }
+
     final heroes = await query.fetch();
     return new Response.ok(heroes);
   }

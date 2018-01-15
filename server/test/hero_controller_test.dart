@@ -33,7 +33,7 @@ Future main() async {
   });
 
   test("Can return all heroes", () async {
-    final response = await app.client.request("/heroes").get();
+    final response = await app.client.request("/api/heroes").get();
 
     expect(response, hasResponse(200, unorderedMatches([
       {
@@ -47,8 +47,19 @@ Future main() async {
     ])));
   });
 
+  test("Can return heroes filtered by name", () async {
+    final response = await app.client.request("/api/heroes?name=aNoTHer").get();
+
+    expect(response, hasResponse(200, [
+      {
+        "id": hero2.id,
+        "name": hero2.name
+      }
+    ]));
+  });
+
   test("Can return hero by ID", () async {
-    final response = await app.client.request("/heroes/${hero2.id}").get();
+    final response = await app.client.request("/api/heroes/${hero2.id}").get();
 
     expect(response, hasResponse(200, {
       "id": hero2.id,
@@ -57,7 +68,7 @@ Future main() async {
   });
 
   test("Doesn't return non-existent heroes", () async {
-    final response = await app.client.request("/heroes/$nonexistentId").get();
+    final response = await app.client.request("/api/heroes/$nonexistentId").get();
 
     expect(response, hasStatus(HttpStatus.NOT_FOUND));
   });
@@ -65,7 +76,7 @@ Future main() async {
   test("Can create hero", () async {
     final newHeroName = "A New Hero Name";
 
-    final request = app.client.request("/heroes")
+    final request = app.client.request("/api/heroes")
       ..json = {
         "name": newHeroName
       };
@@ -81,7 +92,7 @@ Future main() async {
   test("Can Update a hero", () async {
     final newHeroName = "A New Hero Name";
 
-    final request = app.client.request("/heroes/${hero1.id}")
+    final request = app.client.request("/api/heroes/${hero1.id}")
       ..json = {
         "name": newHeroName
       };
@@ -95,7 +106,7 @@ Future main() async {
   });
 
   test("Doesn't update non-existent heroes", () async {
-    final request = app.client.request("/heroes/$nonexistentId")
+    final request = app.client.request("/api/heroes/$nonexistentId")
       ..json = {
         "name": "A New Hero Name"
       };
@@ -106,7 +117,7 @@ Future main() async {
   });
 
   test("Can Delete a hero", () async {
-    final response = await app.client.request("/heroes/${hero1.id}").delete();
+    final response = await app.client.request("/api/heroes/${hero1.id}").delete();
 
     expect(response, hasStatus(200));
 
@@ -116,7 +127,7 @@ Future main() async {
   });
 
   test("Doesn't delete non-existent heroes", () async {
-    final response = await app.client.request("/heroes/$nonexistentId").delete();
+    final response = await app.client.request("/api/heroes/$nonexistentId").delete();
 
     expect(response, hasStatus(HttpStatus.NOT_FOUND));
   });
