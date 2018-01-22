@@ -9,7 +9,7 @@ spec:
     metadata:
       labels:
         app: dart-heroes
-        tier: backend
+        role: backend
         type: database
     spec:
       containers:

@@ -13,7 +13,7 @@ spec:
       containers:
         - name: dart-heroes
           imagePullPolicy: Always
-          image: dartheroes/angular:latest
+          image: gcr.io/$PROJECT_ID/angular-heroes:latest
           ports:
             - containerPort: 80
       securityContext:

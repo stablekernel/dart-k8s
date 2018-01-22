@@ -8,13 +8,13 @@ spec:
     metadata:
       labels:
         app: dart-heroes
-        tier: backend
+        role: backend
         type: api
     spec:
       containers:
         - name: dart-heroes
           imagePullPolicy: Always
-          image: dartheroes/aqueduct:latest
+          image: gcr.io/$PROJECT_ID/aqueduct-heroes:latest
           envFrom:
             - secretRef:
                 name: secrets

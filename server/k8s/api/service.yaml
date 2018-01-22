@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: dart-heroes
-    tier: backend
+    role: backend
     type: api
   ports:
     - port: 80

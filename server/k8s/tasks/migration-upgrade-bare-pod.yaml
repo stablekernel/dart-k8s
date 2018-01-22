@@ -6,7 +6,7 @@ spec:
   restartPolicy: Never
   containers:
     - name: migration-upgrade
-      image: dartheroes/aqueduct:latest
+      image: gcr.io/$PROJECT_ID/aqueduct-heroes:latest
       envFrom:
         - secretRef:
             name: secrets
